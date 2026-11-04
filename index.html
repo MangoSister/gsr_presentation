@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unified Gaussian Primitives for Scene Representation and Rendering</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- One <section> per slide. Speaker notes go in <aside class="notes">. -->
+
+        <!-- 1. Title ------------------------------------------------------ -->
+        <section class="title-slide">
+          <h1>Unified Gaussian Primitives for Scene Representation and Rendering</h1>
+          <p class="authors">Author One &middot; Author Two &middot; Author Three</p>
+          <p class="venue">Venue 2027</p>
+
+          <aside class="notes">
+            <p><strong>PLACEHOLDER SPEAKER NOTE.</strong> If you can read this in the speaker view, notes are working.</p>
+            <p>To test: press <strong>S</strong> in the slide window to open the speaker view (allow the pop-up if the browser blocks it).
+              Move the slide window to the projector and press <strong>F</strong> for full screen; keep this window on your laptop.
+              Arrow keys or space work in either window.</p>
+          </aside>
+        </section>
+
+        <!-- 2. Fragments -------------------------------------------------- -->
+        <section>
+          <h2>Fragments: click-by-click builds</h2>
+          <ul>
+            <li class="fragment"><code>fragment</code> fades in (the default)</li>
+            <li class="fragment fade-up"><code>fade-up</code> slides up while fading in</li>
+            <li class="fragment fade-in-then-semi-out"><code>fade-in-then-semi-out</code> dims on the next click</li>
+            <li class="fragment highlight-blue"><code>highlight-blue</code> is visible, then turns blue</li>
+            <li class="fragment grow"><code>grow</code> scales up</li>
+            <li><span class="fragment strike"><code>strike</code> gets crossed out</span></li>
+          </ul>
+
+          <aside class="notes">
+            <p>Placeholder note for the fragments slide. The "Upcoming" panel in the speaker view shows the next click, not just the next slide.</p>
+          </aside>
+        </section>
+
+        <!-- 3. Equations -------------------------------------------------- -->
+        <section>
+          <h2>Equations with KaTeX</h2>
+          <p>Each primitive is an anisotropic 3D Gaussian with mean $\vmu \in \R^3$ and covariance $\Sigma$:</p>
+          $$G(\vx) = \exp\!\Big(-\tfrac{1}{2}\,(\vx-\vmu)^\top \Sigma^{-1} (\vx-\vmu)\Big)$$
+          <div class="fragment fade-up">
+            <p>factored into a rotation $R$ and a scale $S$ so it stays positive semi-definite:</p>
+            $$\Sigma = R\,S\,S^\top R^\top$$
+          </div>
+
+          <aside class="notes">
+            <p>Placeholder note. Inline math uses single dollar signs, display math uses double. Macros such as \vx and \R are defined in src/main.js.</p>
+          </aside>
+        </section>
+
+        <!-- 4. Equation built term by term -------------------------------- -->
+        <section>
+          <h2>Revealing an equation term by term</h2>
+          $$C = \sum_{i=1}^{N}
+              \step{1}{\textcolor{#1f77b4}{c_i}}\;
+              \step{2}{\textcolor{#d62728}{\alpha_i}}\;
+              \step{3}{\textcolor{#2ca02c}{\prod_{j=1}^{i-1} (1-\alpha_j)}}$$
+          <div class="r-hstack term-labels">
+            <p class="fragment" data-fragment-index="1" style="color: var(--c1)">color</p>
+            <p class="fragment" data-fragment-index="2" style="color: var(--c2)">opacity</p>
+            <p class="fragment" data-fragment-index="3" style="color: var(--c3)">transmittance</p>
+          </div>
+          <p class="demo-note">Each term is wrapped in \step{n}{...} and appears together with the label that has data-fragment-index="n".</p>
+
+          <aside class="notes">
+            <p>Placeholder note. Three clicks: color, then opacity, then transmittance.</p>
+          </aside>
+        </section>
+
+        <!-- 5. Auto-Animate (two slides with matching data-id elements) --- -->
+        <section data-auto-animate>
+          <h2>Auto-Animate</h2>
+          <div class="stage">
+            <div data-id="blob-a" class="blob" style="left: 160px; top: 80px; width: 180px; height: 180px; background-color: #1f77b4"></div>
+            <div data-id="blob-b" class="blob" style="left: 550px; top: 80px; width: 180px; height: 180px; background-color: #ff7f0e"></div>
+            <div data-id="blob-c" class="blob" style="left: 940px; top: 80px; width: 180px; height: 180px; background-color: #2ca02c"></div>
+          </div>
+          <p data-id="aa-caption">Three separate representations&hellip;</p>
+
+          <aside class="notes">
+            <p>Placeholder note. On the next slide, elements with the same data-id move, resize and change color.</p>
+          </aside>
+        </section>
+
+        <section data-auto-animate>
+          <h2>Auto-Animate</h2>
+          <div class="stage">
+            <div data-id="blob-a" class="blob" style="left: 480px; top: 90px; width: 320px; height: 160px; background-color: #7b5ea7"></div>
+            <div data-id="blob-b" class="blob" style="left: 565px; top: 20px; width: 150px; height: 300px; background-color: #7b5ea7"></div>
+            <div data-id="blob-c" class="blob" style="left: 530px; top: 60px; width: 220px; height: 220px; background-color: #7b5ea7"></div>
+          </div>
+          <p data-id="aa-caption">&hellip;morph into one unified primitive</p>
+          <p class="demo-note">Mark adjacent slides with data-auto-animate; elements are matched by data-id.</p>
+
+          <aside class="notes">
+            <p>Placeholder note for the second Auto-Animate slide.</p>
+          </aside>
+        </section>
+
+        <!-- 6. Zoom transition + fit text ---------------------------------- -->
+        <section data-transition="zoom">
+          <h2 class="r-fit-text">Key insight goes here</h2>
+          <p class="demo-note">data-transition="zoom" &middot; text sized to fit with class="r-fit-text"</p>
+
+          <aside class="notes">
+            <p>Placeholder note for the key message.</p>
+          </aside>
+        </section>
+
+        <!-- 7. Section divider: fade transition + gradient background ------ -->
+        <section class="section-divider" data-transition="fade"
+          data-background-gradient="linear-gradient(135deg, #1b2a49, #3b5ba5)">
+          <h2>Part 2 &middot; Method</h2>
+          <p class="demo-note">data-transition="fade" with data-background-gradient</p>
+
+          <aside class="notes">
+            <p>Placeholder note for the section divider.</p>
+          </aside>
+        </section>
+
+        <!-- 8. Results: stacked image comparison --------------------------- -->
+        <section>
+          <h2>Results: stacked comparison</h2>
+          <div class="r-stack">
+            <img src="media/placeholder-gt.svg" alt="Ground truth (placeholder)" />
+            <img class="fragment" src="media/placeholder-baseline.svg" alt="Baseline (placeholder)" />
+            <img class="fragment" src="media/placeholder-ours.svg" alt="Ours (placeholder)" />
+          </div>
+          <p class="demo-note">Images in an r-stack sit on top of each other; each fragment fades in over the previous one.</p>
+
+          <!-- Video example (put the file in public/media/):
+          <video data-autoplay muted loop data-src="media/result.mp4"></video>
+          data-autoplay plays when the slide appears; data-src lazy-loads the file. -->
+
+          <aside class="notes">
+            <p>Placeholder note. Ground truth, then baseline, then ours, one per click.</p>
+          </aside>
+        </section>
+
+        <!-- 9. Closing ------------------------------------------------------ -->
+        <section data-transition="convex">
+          <h2>Thank you</h2>
+          <p>Questions?</p>
+          <p class="demo-note">data-transition="convex"</p>
+
+          <aside class="notes">
+            <p>Placeholder note for the closing slide.</p>
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

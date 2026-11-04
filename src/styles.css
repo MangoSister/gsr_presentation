@@ -1,0 +1,73 @@
+/* Theme overrides: reveal.js themes are driven by these CSS variables. */
+:root {
+  --r-main-font-size: 32px;
+  --r-heading-text-transform: none;
+  --r-link-color: #2a76dd;
+
+  --c1: #1f77b4;
+  --c2: #d62728;
+  --c3: #2ca02c;
+  --muted: #6b7280;
+}
+
+.reveal code {
+  font-size: 0.85em;
+  color: #374151;
+}
+
+/* Small grey annotation explaining what a demo slide shows. */
+.reveal .demo-note {
+  font-size: 0.55em;
+  color: var(--muted);
+}
+
+/* ---- Title slide ---- */
+.reveal .title-slide h1 {
+  font-size: 1.75em;
+  line-height: 1.15;
+  margin-bottom: 1.2em;
+}
+.reveal .title-slide .authors {
+  font-size: 0.9em;
+}
+.reveal .title-slide .venue {
+  font-size: 0.75em;
+  color: var(--muted);
+}
+
+/* ---- Equation term labels ---- */
+.reveal .term-labels {
+  gap: 3em;
+  margin-top: 1em;
+}
+.reveal .term-labels p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* ---- Auto-Animate demo ---- */
+.reveal .stage {
+  position: relative;
+  height: 340px;
+}
+.reveal .blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  filter: blur(3px);
+}
+
+/* ---- Section divider on a dark background ---- */
+.reveal .section-divider h2,
+.reveal .section-divider p {
+  color: #fff;
+}
+.reveal .section-divider .demo-note {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---- Stacked image comparison ---- */
+.reveal .r-stack img {
+  width: 800px;
+}

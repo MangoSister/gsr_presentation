@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#eef1f5"/>
+  <g opacity="0.8">
+    <ellipse cx="290" cy="220" rx="140" ry="90" fill="#1f77b4"/>
+    <ellipse cx="440" cy="190" rx="100" ry="140" fill="#ff7f0e"/>
+    <ellipse cx="540" cy="280" rx="130" ry="70" fill="#2ca02c"/>
+  </g>
+  <text x="24" y="428" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#333">Ground truth (placeholder)</text>
+</svg>
