@@ -66,6 +66,9 @@
 .reveal .section-divider .demo-note {
   color: rgba(255, 255, 255, 0.7);
 }
+.reveal .section-divider code {
+  color: inherit;
+}
 
 /* ---- Stacked image comparison ---- */
 .reveal .r-stack img {

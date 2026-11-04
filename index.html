@@ -8,7 +8,9 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <!-- One <section> per slide. Speaker notes go in <aside class="notes">. -->
+        <!-- One <section> per slide. Speaker notes go in <aside class="notes">.
+             <section data-markdown="slides/NAME.md"></section> inserts the slides
+             from a Markdown file (separated by ---) at that position. -->
 
         <!-- 1. Title ------------------------------------------------------ -->
         <section class="title-slide">
@@ -24,37 +26,8 @@
           </aside>
         </section>
 
-        <!-- 2. Fragments -------------------------------------------------- -->
-        <section>
-          <h2>Fragments: click-by-click builds</h2>
-          <ul>
-            <li class="fragment"><code>fragment</code> fades in (the default)</li>
-            <li class="fragment fade-up"><code>fade-up</code> slides up while fading in</li>
-            <li class="fragment fade-in-then-semi-out"><code>fade-in-then-semi-out</code> dims on the next click</li>
-            <li class="fragment highlight-blue"><code>highlight-blue</code> is visible, then turns blue</li>
-            <li class="fragment grow"><code>grow</code> scales up</li>
-            <li><span class="fragment strike"><code>strike</code> gets crossed out</span></li>
-          </ul>
-
-          <aside class="notes">
-            <p>Placeholder note for the fragments slide. The "Upcoming" panel in the speaker view shows the next click, not just the next slide.</p>
-          </aside>
-        </section>
-
-        <!-- 3. Equations -------------------------------------------------- -->
-        <section>
-          <h2>Equations with KaTeX</h2>
-          <p>Each primitive is an anisotropic 3D Gaussian with mean $\vmu \in \R^3$ and covariance $\Sigma$:</p>
-          $$G(\vx) = \exp\!\Big(-\tfrac{1}{2}\,(\vx-\vmu)^\top \Sigma^{-1} (\vx-\vmu)\Big)$$
-          <div class="fragment fade-up">
-            <p>factored into a rotation $R$ and a scale $S$ so it stays positive semi-definite:</p>
-            $$\Sigma = R\,S\,S^\top R^\top$$
-          </div>
-
-          <aside class="notes">
-            <p>Placeholder note. Inline math uses single dollar signs, display math uses double. Macros such as \vx and \R are defined in src/main.js.</p>
-          </aside>
-        </section>
+        <!-- 2-3. Markdown: fragments and equations ------------------------ -->
+        <section data-markdown="slides/intro.md"></section>
 
         <!-- 4. Equation built term by term -------------------------------- -->
         <section>
@@ -115,16 +88,8 @@
           </aside>
         </section>
 
-        <!-- 7. Section divider: fade transition + gradient background ------ -->
-        <section class="section-divider" data-transition="fade"
-          data-background-gradient="linear-gradient(135deg, #1b2a49, #3b5ba5)">
-          <h2>Part 2 &middot; Method</h2>
-          <p class="demo-note">data-transition="fade" with data-background-gradient</p>
-
-          <aside class="notes">
-            <p>Placeholder note for the section divider.</p>
-          </aside>
-        </section>
+        <!-- 7. Markdown: section divider ---------------------------------- -->
+        <section data-markdown="slides/method.md"></section>
 
         <!-- 8. Results: stacked image comparison --------------------------- -->
         <section>

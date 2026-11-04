@@ -26,10 +26,53 @@ To get a pacing timer in the speaker view, set `totalTime` in `src/main.js`.
 
 ## Edit
 
-- **Slides**: `index.html`, one `<section>` per slide.
-- **Speaker notes**: `<aside class="notes">...</aside>` inside a slide.
-- **Math**: `$...$` inline, `$$...$$` display. Put your paper's macros in `macros` in `src/main.js`.
-- **Equation builds**: wrap a term in `\step{n}{...}` to reveal it on click `n`. HTML elements with
+The deck is assembled in `index.html`, top to bottom, from two kinds of slides:
+
+- **Markdown files** in `slides/`: the easiest way to write text and equations.
+  `<section data-markdown="slides/intro.md"></section>` inserts that file's slides at that point.
+- **HTML** `<section>` elements: for custom layouts and animations (see the equation-build,
+  Auto-Animate and results slides).
+
+Edits to either reload the browser automatically.
+
+### Markdown
+
+```md
+<!-- .slide: data-transition="zoom" -->
+
+## Slide title
+
+- A bullet with math $\Sigma = R S S^\top R^\top$
+- Appears on the next click <!-- .element: class="fragment" -->
+
+$$G(\vx) = \exp\big(-\tfrac12 (\vx-\vmu)^\top \Sigma^{-1} (\vx-\vmu)\big)$$
+
+![Result](media/result.png) <!-- .element: style="height: 400px" -->
+
+Note:
+Speaker notes for this slide.
+
+---
+
+## Next slide
+```
+
+- `---` on its own line, with blank lines around it, starts a new slide.
+- `Note:` starts the speaker notes; the rest of that slide is notes.
+- `<!-- .slide: ... -->` sets options for the slide: transition, background, class.
+- `<!-- .element: ... -->` at the end of a bullet, paragraph or heading applies to that whole line;
+  right after an image or video it applies to the image or video. Use it for fragments
+  (`class="fragment fade-up"`), click order (`data-fragment-index="2"`) or sizes.
+- Math is plain LaTeX, no escaping: `$...$` or `\(...\)` inline, `$$...$$` or `\[...\]` display.
+  Write `\$` for a literal dollar sign; amounts like `$5` are left alone.
+- HTML works inside Markdown, e.g. `<div class="fragment">` ... `</div>` around several lines
+  (with blank lines just inside the tags, so the Markdown in between is still converted).
+
+### Everywhere
+
+- **Speaker notes in HTML slides**: `<aside class="notes">...</aside>` inside the `<section>`.
+- **Math macros**: put your paper's `\newcommand`s in `macros` in `src/main.js`.
+- **Equation builds**: wrap a term in `\step{n}{...}` to reveal it on click `n`. Elements with
   `class="fragment" data-fragment-index="n"` appear at the same click.
 - **Transitions**: deck default in `src/main.js`; per slide with `data-transition="fade"`
   (`none`, `fade`, `slide`, `convex`, `concave`, `zoom`).

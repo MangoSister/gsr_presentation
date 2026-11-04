@@ -16,6 +16,8 @@ export default defineConfig(({ mode }) => {
     plugins: singleFile ? [viteSingleFile()] : [],
     build: {
       outDir: singleFile ? 'bundle' : 'dist',
+      // A local slide deck isn't downloaded over a network; ignore the 500 kB default.
+      chunkSizeWarningLimit: 3000,
     },
   };
 });

@@ -1,6 +1,8 @@
 import Reveal from 'reveal.js';
+import Markdown from 'reveal.js/plugin/markdown';
 import Notes from 'reveal.js/plugin/notes';
-import renderMathInElement from 'katex/contrib/auto-render';
+import { loadMarkdown, MarkdownFixes } from './markdown.js';
+import KaTeX from './katex.js';
 
 import 'reveal.js/reset.css';
 import 'reveal.js/reveal.css';
@@ -19,32 +21,15 @@ const macros = {
   '\\vmu': '\\boldsymbol{\\mu}',
 
   // \step{n}{...}: reveal this part of an equation at fragment step n.
-  // Use the same n in data-fragment-index on HTML elements to sync them.
+  // Use the same n in data-fragment-index on other elements to sync them.
   '\\step': '\\htmlData{fragment-index=#1}{#2}',
 };
-
-// Render math before reveal.js starts, so it lays out and finds fragments correctly.
-renderMathInElement(document.querySelector('.reveal .slides'), {
-  delimiters: [
-    { left: '$$', right: '$$', display: true },
-    { left: '\\[', right: '\\]', display: true },
-    { left: '$', right: '$', display: false },
-    { left: '\\(', right: '\\)', display: false },
-  ],
-  macros,
-  trust: true, // allow \htmlData / \htmlClass (used by \step)
-  strict: (code) => (code === 'htmlExtension' ? 'ignore' : 'warn'),
-  throwOnError: false, // show bad LaTeX in red instead of breaking the deck
-});
-
-// Turn \step{n}{...} spans into reveal.js fragments.
-document
-  .querySelectorAll('.katex [data-fragment-index]')
-  .forEach((el) => el.classList.add('fragment'));
 
 // ---------------------------------------------------------------------------
 // reveal.js
 // ---------------------------------------------------------------------------
+
+loadMarkdown(); // fill <section data-markdown="slides/..."> from slides/*.md
 
 Reveal.initialize({
   width: 1280, // 16:9 canvas; reveal.js scales it to fit any screen
@@ -63,5 +48,6 @@ Reveal.initialize({
   // Talk length in seconds. Turns on the pacing timer in the speaker view.
   // totalTime: 15 * 60,
 
-  plugins: [Notes], // press S to open the speaker view
+  // Order matters: Markdown, then its fixes, then KaTeX. Notes: press S for the speaker view.
+  plugins: [Markdown, MarkdownFixes, KaTeX({ macros }), Notes],
 });
